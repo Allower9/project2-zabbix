@@ -16,10 +16,12 @@ sudo apt update && sudo apt upgrade -y
 Скачайте и установите пакет репозитория:
 
 
-Копировать код ```
+```Копировать код 
 wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-1+ubuntu24.04_all.deb 
  sudo dpkg -i zabbix-release_7.0-1+ubuntu24.04_all.deb
- sudo apt update ```
+ sudo apt update
+
+```
 3. Установка компонентов Zabbix
 Установите сервер, веб-интерфейс и агент:
 
