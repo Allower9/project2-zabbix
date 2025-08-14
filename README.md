@@ -137,3 +137,88 @@ date.timezone = Europe/Moscow
 ##### Zabbix 7.0 LTS
 ##### MariaDB с unix_socket-аутентификацией
 <img width="2874" height="1714" alt="image" src="https://github.com/user-attachments/assets/da965994-c624-4c09-b210-27768fdf1118" />
+
+
+
+
+### Простая настройка мониторинга Docker Compose и Zabbix Agent для новичка
+#### 1. Установка Zabbix Agent на клиентский сервер (который будем мониторить)
+``` bash
+wget https://repo.zabbix.com/zabbix/7.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_7.0-1+ubuntu24.04_all.deb
+sudo dpkg -i zabbix-release_7.0-1+ubuntu24.04_all.deb
+sudo apt update
+sudo apt install -y zabbix-agent2
+```
+#### 2. Настройка агента (на клиенте)
+##### Откройте конфиг:
+
+```bash
+sudo nano /etc/zabbix/zabbix_agent2.conf
+```
+##### Измените:
+
+```ini
+Server=IP_вашего_Zabbix_сервера
+ServerActive=IP_вашего_Zabbix_сервера
+Hostname=client-hostname  # Уникальное имя для этого хоста
+```
+##### Перезапустите агент:
+
+```bash
+sudo systemctl restart zabbix-agent2
+sudo systemctl enable zabbix-agent2
+```
+#### 3. Добавление хоста в Zabbix (на сервере)
+##### Откройте веб-интерфейс: http://ваш_zabbix_сервер/zabbix
+
+##### Перейдите: Configuration → Hosts → Create host
+
+##### Заполните:
+
+##### Host name: client-hostname (как в конфиге агента)
+
+##### Groups: Linux servers
+
+##### Interfaces: Добавьте IP клиента, порт 10050 (Agent)
+
+##### Templates:
+
+##### Добавьте: Linux by Zabbix agent
+
+##### Добавьте: Docker by Zabbix agent 2 (встроен в Zabbix 7.0)
+
+#### 4. Настройка мониторинга Docker Compose (самая простая версия)
+##### На клиентском сервере дайте агенту доступ к Docker:
+
+```bash
+sudo usermod -aG docker zabbix
+sudo systemctl restart zabbix-agent2
+```
+##### Проверьте, что агент видит Docker:
+
+```bash
+sudo -u zabbix docker ps
+```
+#### 5. Что будет мониториться автоматически
+##### После привязки шаблона Docker by Zabbix agent 2 Zabbix будет собирать:
+
+##### Общее количество контейнеров
+
+##### Состояние каждого контейнера (running/exited)
+
+##### Использование CPU/RAM/сети
+
+##### Дисковое пространство
+
+#### 6. Проверка работы
+##### На сервере Zabbix:
+
+##### Перейдите: Monitoring → Hosts
+
+##### Выберите ваш хост
+
+ ##### Проверьте вкладки Latest data и Dashboards
+
+
+<img width="2528" height="1690" alt="image" src="https://github.com/user-attachments/assets/91a8f286-b2b9-491a-a485-af702cf71010" />
+
