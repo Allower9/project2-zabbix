@@ -221,4 +221,4 @@ sudo -u zabbix docker ps
 
 
 <img width="2528" height="1690" alt="image" src="https://github.com/user-attachments/assets/91a8f286-b2b9-491a-a485-af702cf71010" />
-
+##### все работает - так как у нас динамические ip адреса ( как для примера будет достаточно 1 сервера )
