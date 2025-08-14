@@ -1,9 +1,6 @@
 # project2-zabbix
-Вот подробная инструкция по установке Zabbix 7.0 на Ubuntu 24.04 в формате Markdown:
+Вот подробная инструкция по установке Zabbix 7.0 на Ubuntu 24.04 
 
-markdown
-
-Копировать код
 # Установка Zabbix 7.0 на Ubuntu 24.04
 
 ## 1. Подготовка системы
@@ -70,15 +67,16 @@ sudo zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql -u zabbix -p
 Тут нужно подождать - После нескольких попыток и пересоздания пользователя импорт завершился успешно (204 таблицы).
 
 7. Настройка PHP
-Обнаружили, что файл /etc/php/8.3/apache2/php.ini был пуст. ---
+Обнаружили, что файл /etc/php/8.3/apache2/php.ini был пуст. --- тут исправлял ошибку с php ( не было файла /etc/php/8.3/apache2/php.ini возможно из-за того, что не была установленна конкретная версия для zabbix -- пришлось установить и поменять на другую версию php 
 
 ```sudo apt install -y php php-{bcmath,bz2,cli,common,curl,gd,gmp,imagick,intl,ldap,mbstring,mysql,opcache,readline,redis,xml,zip} libapache2-mod-php```
 
-проверка 
+``` проверка 
 user1@zabbix-serv:~$ ```sudo mysql -u zabbix -p -e "USE zabbix; SHOW TABLES;" | wc -l```
 Enter password: 
 204
 ```sudo apt install -y libapache2-mod-php8.3 php8.3```
+
 ```sudo update-alternatives --config php```
 ``` There are 2 choices for the alternative php (providing /usr/bin/php).
 
