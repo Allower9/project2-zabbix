@@ -49,12 +49,14 @@ bash
 ```
 sql
 
-Копировать код
-``` CREATE DATABASE zabbix CHARACTER SET utf8mb4 COLLATE utf8mb4_bin; ```
-```CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'StrongPassword123';```
-```GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';```
-```FLUSH PRIVILEGES;```
-```EXIT;```
+``` Копировать код
+CREATE DATABASE zabbix CHARACTER SET utf8mb4 COLLATE utf8mb4_bin; 
+CREATE USER 'zabbix'@'localhost' IDENTIFIED BY 'StrongPassword123';
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+```
 6. Импорт схемы
 Импортируйте схему:
 
