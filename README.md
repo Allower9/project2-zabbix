@@ -136,3 +136,4 @@ date.timezone = Europe/Moscow
 ##### Ubuntu 24.04
 ##### Zabbix 7.0 LTS
 ##### MariaDB с unix_socket-аутентификацией
+<img width="2874" height="1714" alt="image" src="https://github.com/user-attachments/assets/da965994-c624-4c09-b210-27768fdf1118" />
